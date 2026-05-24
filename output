@@ -1,0 +1,120 @@
+PS C:\pdn_test> py .\pdn_clean.py
+==================================================
+DIGANTARA PDN LOAD TRANSIENT TEST
+==================================================
+Start Time: 2026-05-24 16:12:06.439851
+Mode: SIMULATION
+
+--------------------------------------------------
+Rail: +3V6
+Nominal: 3.6 V
+Load Step: 1.25 A -> 2.5 A
+--------------------------------------------------
+Cap 1 | V = 3.5541 V | Ripple = 38.56 mV | Recovery = 0.536 ms | Result = PASS
+Cap 2 | V = 3.6234 V | Ripple = 30.87 mV | Recovery = 0.368 ms | Result = PASS
+Cap 3 | V = 3.5664 V | Ripple = 35.97 mV | Recovery = 0.482 ms | Result = PASS
+Cap 4 | V = 3.6059 V | Ripple = 24.25 mV | Recovery = 0.311 ms | Result = PASS
+Cap 5 | V = 3.5698 V | Ripple = 29.64 mV | Recovery = 0.66 ms | Result = PASS
+Cap 6 | V = 3.5811 V | Ripple = 34.07 mV | Recovery = 0.495 ms | Result = PASS
+Cap 7 | V = 3.5878 V | Ripple = 32.49 mV | Recovery = 0.463 ms | Result = PASS
+Cap 8 | V = 3.5743 V | Ripple = 37.5 mV | Recovery = 0.469 ms | Result = PASS
+Cap 9 | V = 3.6018 V | Ripple = 26.2 mV | Recovery = 0.665 ms | Result = PASS
+Cap 10 | V = 3.5538 V | Ripple = 25.57 mV | Recovery = 0.715 ms | Result = PASS
+Rail Summary: 10 / 10 PASS
+
+--------------------------------------------------
+Rail: +1V8
+Nominal: 1.8 V
+Load Step: 1.5 A -> 3.0 A
+--------------------------------------------------
+Cap 1 | V = 1.8232 V | Ripple = 25.79 mV | Recovery = 0.221 ms | Result = PASS
+Cap 2 | V = 1.8187 V | Ripple = 25.22 mV | Recovery = 0.516 ms | Result = PASS
+Cap 3 | V = 1.8088 V | Ripple = 33.97 mV | Recovery = 0.642 ms | Result = PASS
+Cap 4 | V = 1.7801 V | Ripple = 35.24 mV | Recovery = 0.581 ms | Result = PASS
+Cap 5 | V = 1.7742 V | Ripple = 43.61 mV | Recovery = 0.47 ms | Result = PASS
+Cap 6 | V = 1.7803 V | Ripple = 37.13 mV | Recovery = 0.492 ms | Result = PASS
+Cap 7 | V = 1.7867 V | Ripple = 35.47 mV | Recovery = 0.272 ms | Result = PASS
+Cap 8 | V = 1.8234 V | Ripple = 34.95 mV | Recovery = 0.755 ms | Result = PASS
+Cap 9 | V = 1.7881 V | Ripple = 40.3 mV | Recovery = 0.405 ms | Result = PASS
+Cap 10 | V = 1.7841 V | Ripple = 34.49 mV | Recovery = 0.409 ms | Result = PASS
+Rail Summary: 10 / 10 PASS
+
+--------------------------------------------------
+Rail: +3V3
+Nominal: 3.3 V
+Load Step: 1.5 A -> 3.0 A
+--------------------------------------------------
+Cap 1 | V = 3.2796 V | Ripple = 69.91 mV | Recovery = 1.294 ms | Result = FAIL
+Cap 2 | V = 3.2569 V | Ripple = 41.85 mV | Recovery = 0.659 ms | Result = PASS
+Cap 3 | V = 3.2538 V | Ripple = 68.95 mV | Recovery = 1.833 ms | Result = FAIL
+Cap 4 | V = 3.3315 V | Ripple = 32.89 mV | Recovery = 0.455 ms | Result = PASS
+Cap 5 | V = 3.302 V | Ripple = 55.89 mV | Recovery = 1.672 ms | Result = FAIL
+Cap 6 | V = 3.282 V | Ripple = 69.75 mV | Recovery = 1.359 ms | Result = FAIL
+Cap 7 | V = 3.3271 V | Ripple = 28.11 mV | Recovery = 0.34 ms | Result = PASS
+Cap 8 | V = 3.2933 V | Ripple = 27.44 mV | Recovery = 0.47 ms | Result = PASS
+Cap 9 | V = 3.252 V | Ripple = 27.26 mV | Recovery = 0.245 ms | Result = PASS
+Cap 10 | V = 3.275 V | Ripple = 22.94 mV | Recovery = 0.753 ms | Result = PASS
+Rail Summary: 6 / 10 PASS
+
+--------------------------------------------------
+Rail: +2V5
+Nominal: 2.5 V
+Load Step: 0.75 A -> 1.5 A
+--------------------------------------------------
+Cap 1 | V = 2.5062 V | Ripple = 44.12 mV | Recovery = 0.706 ms | Result = PASS
+Cap 2 | V = 2.5368 V | Ripple = 26.86 mV | Recovery = 0.439 ms | Result = PASS
+Cap 3 | V = 2.5129 V | Ripple = 44.72 mV | Recovery = 0.269 ms | Result = PASS
+Cap 4 | V = 2.5109 V | Ripple = 42.9 mV | Recovery = 0.308 ms | Result = PASS
+Cap 5 | V = 2.5318 V | Ripple = 28.5 mV | Recovery = 0.725 ms | Result = PASS
+Cap 6 | V = 2.4776 V | Ripple = 25.57 mV | Recovery = 0.534 ms | Result = PASS
+Cap 7 | V = 2.5027 V | Ripple = 29.78 mV | Recovery = 0.329 ms | Result = PASS
+Cap 8 | V = 2.5261 V | Ripple = 32.97 mV | Recovery = 0.331 ms | Result = PASS
+Cap 9 | V = 2.4641 V | Ripple = 39.19 mV | Recovery = 0.385 ms | Result = PASS
+Cap 10 | V = 2.4681 V | Ripple = 31.73 mV | Recovery = 0.354 ms | Result = PASS
+Rail Summary: 10 / 10 PASS
+
+CSV saved: PDN_Test_Log_20260524_161206.csv
+
+==================================================
+DIGANTARA PDN TEST REPORT
+Generated: 2026-05-24 16:12:08
+==================================================
+
+Acceptance Criteria:
+  DC Voltage  : within +/-5% of nominal
+  Ripple      : < 50 mV p-p
+  Recovery    : < 1.0 ms
+
+Rail: +3V6
+  Pass: 10/10
+  Fail: 0/10
+  Avg Ripple: 31.51 mV
+  Max Ripple: 38.56 mV
+  Status: PASS
+
+Rail: +1V8
+  Pass: 10/10
+  Fail: 0/10
+  Avg Ripple: 34.62 mV
+  Max Ripple: 43.61 mV
+  Status: PASS
+
+Rail: +3V3
+  Pass: 6/10
+  Fail: 4/10
+  Avg Ripple: 44.5 mV
+  Max Ripple: 69.91 mV
+  Status: FAIL
+
+Rail: +2V5
+  Pass: 10/10
+  Fail: 0/10
+  Avg Ripple: 34.63 mV
+  Max Ripple: 44.72 mV
+  Status: PASS
+
+--------------------------------------------------
+OVERALL BOARD RESULT: FAIL
+--------------------------------------------------
+Report saved: PDN_Test_Report_20260524_161206.txt
+PS C:\pdn_test> 
