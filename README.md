@@ -146,6 +146,20 @@ drop to zero that confirms the ESR root cause.
 - Set SIMULATION_MODE = False for real bench use
 - Update VISA addresses to match your instrument connections
 - PyVISA library needed only for actual hardware run
+
+## SCREENSHOTS
+  
+<img width="1706" height="795" alt="image" src="https://github.com/user-attachments/assets/1cd68e87-1b21-4d70-8949-f49baa234288" />
+
+<img width="1500" height="759" alt="image" src="https://github.com/user-attachments/assets/9855903f-9337-4a15-ab1c-90f4d9d77c27" />
+
+<img width="1558" height="784" alt="image" src="https://github.com/user-attachments/assets/f16bf8de-ea8e-4330-bfe7-8efe5b7d1959" />
+
+<img width="1707" height="813" alt="image" src="https://github.com/user-attachments/assets/cb910e97-a0c1-48e6-99f7-8173dda72e0f" />
+
+<img width="1794" height="770" alt="image" src="https://github.com/user-attachments/assets/efedb43a-1849-4b71-a48c-9f856091a8bb" />
+
+- 
 <img width="1705" height="658" alt="image" src="https://github.com/user-attachments/assets/56a2c6e0-fd99-4cff-972b-8e884941fa30" />
 
 
