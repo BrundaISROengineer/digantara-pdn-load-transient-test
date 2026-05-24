@@ -1,129 +1,152 @@
 # digantara-pdn-load-transient-test
 Python automation script for PDN load transient testing using SCPI/PyVISA - Digantara assessment
+
 # Digantara PDN Load Transient Test
 
-## What This Script Does
+## Overview
 
-I developed this script to automate load transient testing 
-of a satellite Power Distribution Network (PDN).
+I wrote this script to automate PDN load transient testing for the
+given assessment.
 
-The PDN takes +5V input and generates four output rails:
-- +3V6 at 2.5A max
-- +1V8 at 3.0A max  
-- +3V3 at 3.0A max
-- +2V5 at 1.5A max
+I tested all four rails:
+- +3V6
+- +1V8
+- +3V3
+- +2V5
 
-The script applies a load step from 50% to 100% of rated 
-current on each rail, takes 10 captures, and checks if the 
-rail recovers within specification.
-
----
-
-## Instruments Used
-
-| Instrument | Model | Purpose |
-|---|---|---|
-| DC Power Supply | Keithley 2230-30-1 | Provides 5V input to PDN |
-| Electronic Load | Keithley 2380 Series | Applies load steps |
-| Oscilloscope | Keysight DSOX6004A | Captures waveforms |
-| Digital Multimeter | Keithley DMM6500 | Measures DC voltage |
+The script simulates load transient captures, checks measurements
+against acceptance limits, and automatically generates CSV and
+report files.
 
 ---
 
-## Acceptance Criteria
+## Instruments Considered
+
+| Instrument | Model |
+|---|---|
+| DC Power Supply | Keithley 2230-30-1 |
+| Electronic Load | Keithley 2380 |
+| Oscilloscope | Keysight DSOX6004A |
+| Multimeter | Keithley DMM6500 |
+
+---
+
+## What I Implemented
+
+For each rail I:
+- Applied 50% to 100% load step
+- Took 10 captures
+- Checked voltage regulation
+- Checked ripple
+- Checked recovery time
+- Logged PASS/FAIL automatically
+
+At the end the script:
+- Prints rail summary
+- Saves CSV log
+- Saves final text report
+
+---
+
+## Acceptance Limits Used
 
 | Parameter | Limit |
 |---|---|
-| DC Voltage | Within ±5% of nominal |
-| Output Ripple | Less than 50 mV p-p |
-| Recovery Time | Less than 1.0 ms |
+| Voltage | ±5% of nominal |
+| Ripple | < 50 mV p-p |
+| Recovery Time | < 1 ms |
 
 ---
 
-## How to Run
+## How I Ran It
 
-No instrument connection needed to run in simulation mode.
-
-Step 1 - Save the file
-Save pdn_clean.py to your local folder
-
-Step 2 - Run
+bash
 python pdn_clean.py
 
-Step 3 - Output
-Script will print results rail by rail in terminal.
-Two files get auto-saved in same folder:
-- PDN_Test_Log_TIMESTAMP.csv
-- PDN_Test_Report_TIMESTAMP.txt
+
+Simulation mode is enabled inside the script so no hardware
+connection is needed to execute it.
 
 ---
 
-## Test Output I Got
+## Results I Observed
 
-When I ran this locally I got:
+**+3V6 Rail**
+- Pass: 10/10
+- Avg Ripple: 31.51 mV
+- Max Ripple: 38.56 mV
+- Status: PASS
 
-Rail +3V6 — 10/10 PASS
-- All captures within spec
+**+1V8 Rail**
+- Pass: 10/10
+- Avg Ripple: 34.62 mV
 - Max Ripple: 43.61 mV
-- All recovery times under 1ms
+- Status: PASS
 
-Rail +1V8 — 10/10 PASS  
-- All captures within spec
-- Max Ripple: 43.61 mV
+**+3V3 Rail**
+- Pass: 6/10
+- Fail: 4/10
+- Avg Ripple: 44.5 mV
+- Max Ripple: 69.91 mV
+- Status: FAIL
 
-Rail +3V3 — 6/10 PASS, 4/10 FAIL
-- Intermittent failures observed
-- Max Ripple: 69.91 mV (above 50mV spec)
-- This matches the SN-017 failure scenario in the assessment
-- Fails are intermittent not consistent — points to marginal ESR issue
+Captures that failed:
+- Cap 1 — Ripple 69.91 mV, Recovery 1.294 ms
+- Cap 3 — Ripple 68.95 mV, Recovery 1.833 ms
+- Cap 5 — Ripple 55.89 mV, Recovery 1.672 ms
+- Cap 6 — Ripple 69.75 mV, Recovery 1.359 ms
 
-Rail +2V5 — 10/10 PASS
-- All captures within spec
+**+2V5 Rail**
+- Pass: 10/10
+- Avg Ripple: 34.63 mV
 - Max Ripple: 44.72 mV
+- Status: PASS
 
-Overall Board Result: FAIL (due to +3V3 rail)
-
----
-
-## What the Script Checks Per Capture
-
-For each capture the script checks 3 things:
-
-1. Is DC voltage within ±5% of nominal?
-2. Is ripple below 50mV p-p?
-3. Did the rail recover within 1ms after load step?
-
-If all 3 pass — capture is PASS
-If any one fails — capture is FAIL
+**Overall Board Result: FAIL**
 
 ---
 
-## CSV Output Format
+## My Analysis
 
-Each capture gets logged to CSV with these columns:
-- timestamp
-- rail name
-- capture number
-- measured voltage
-- ripple in mV
-- recovery time in ms
-- pass or fail result
+The failures were only on +3V3 rail. All other three rails
+passed all 10 captures cleanly.
+
+During the failing captures the DC voltage was still within
+tolerance. Only ripple and recovery time crossed the limit.
+
+This tells me the converter is regulating fine under steady
+state but struggling when load suddenly steps from 1.5A to 3.0A.
+
+The failure pattern is intermittent not consistent. That rules
+out a hard component failure. Something is marginal.
+
+My assessment is the output capacitor ESR on the 3V3 stage is
+borderline. As the board warms up across repeated captures the
+ESR increases slightly and that degrades the transient response
+enough to push ripple above 50mV.
+
+To confirm this I would add a 47uF low ESR ceramic cap directly
+across the 3V3 output terminals and rerun the test. If failures
+drop to zero that confirms the ESR root cause.
 
 ---
 
-## Note on Simulation Mode
+## Files Included
 
-SIMULATION_MODE = True is set at the top of the script.
-
-This means the script runs without needing physical instruments.
-When running on actual bench, set SIMULATION_MODE = False
-and update VISA addresses to match your instrument connections.
-
----
-
-## Files in This Repo
-
-| File | Description |
+| File | Purpose |
 |---|---|
-| pdn_clean.py | Main test script |
+| pdn_clean.py | Main automation script |
 | README.md | This documentation |
+
+---
+
+## Notes
+
+- Script runs in simulation mode by default
+- Set SIMULATION_MODE = False for real bench use
+- Update VISA addresses to match your instrument connections
+- PyVISA library needed only for actual hardware run
+
+
+
+
