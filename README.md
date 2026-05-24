@@ -60,7 +60,7 @@ At the end the script:
 
 ## How I Ran It
 
-bash
+
 python pdn_clean.py
 
 
@@ -137,6 +137,7 @@ drop to zero that confirms the ESR root cause.
 |---|---|
 | pdn_clean.py | Main automation script |
 | README.md | This documentation |
+| output | complete output details |
 
 ---
 
@@ -148,6 +149,7 @@ drop to zero that confirms the ESR root cause.
 - PyVISA library needed only for actual hardware run
 
 ## SCREENSHOTS
+The following screenshots show the actual execution, generated output, and project structure used during PDN transient test automation.
   
 <img width="1706" height="795" alt="image" src="https://github.com/user-attachments/assets/1cd68e87-1b21-4d70-8949-f49baa234288" />
 
